@@ -897,6 +897,7 @@
       year = parsed.UTCFullYear;
       if (parsed.UTCYear) year = 2000 + parsed.UTCYear;
       if (!year) year = 1970;
+      if (parsed.UTCFullYear && parsed.UTCFullYear < 100) year = year + 2000;
       if (parsed.UTCMonth) month = parsed.UTCMonth - 1;
       else month = 0;
       date = parsed.UTCDate || 1;
@@ -1118,7 +1119,7 @@
     dd: {property: 'UTCDate', getPattern: function() { return '(0?[1-9]|[1-2][0-9]|3[0-1])\\b';}},
     MM: {property: 'UTCMonth', getPattern: function() {return '(0?[1-9]|1[0-2])\\b';}},
     yy: {property: 'UTCYear', getPattern: function() {return '(\\d{2})\\b'}},
-    yyyy: {property: 'UTCFullYear', getPattern: function() {return '(\\d{4})\\b';}},
+    yyyy: {property: 'UTCFullYear', getPattern: function() {return '(\\d{2}|\\d{4})\\b';}},
     hh: {property: 'UTCHours', getPattern: function() {return '(0?[0-9]|1[0-9]|2[0-3])\\b';}},
     mm: {property: 'UTCMinutes', getPattern: function() {return '(0?[0-9]|[1-5][0-9])\\b';}},
     ss: {property: 'UTCSeconds', getPattern: function() {return '(0?[0-9]|[1-5][0-9])\\b';}},
